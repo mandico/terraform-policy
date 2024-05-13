@@ -44,3 +44,6 @@ jobs:
     - name: Conftest
       run: |
         conftest test tfplan.json
+
+    - name: Terraform Apply
+      run: terraform apply
