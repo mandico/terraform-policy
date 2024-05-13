@@ -32,7 +32,7 @@ jobs:
     - name: Terraform Show
       run: |
         terraform show -json tfplan.binary > tfplan.json
-        cat tfplan.json
+
 
     - name: Install Conftest
       run: |
@@ -40,4 +40,6 @@ jobs:
         sudo mv conftest /usr/local/bin
 
     - name: Conftest
-      run: conftest test tfplan.json
+      run: |
+        cat tfplan.json
+        conftest test tfplan.json
