@@ -3,7 +3,7 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "rg" {
-  name     = "azr-rgdemo"
-  location = "brazilsouth"
+  name     = "azr-rg-demo"
+  location = "eastus"
 }
 
