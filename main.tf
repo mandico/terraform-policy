@@ -16,17 +16,22 @@ resource "azurerm_resource_group" "rg" {
   location = "eastus"
 }
 
-resource "azurerm_mysql_server" "mysql" {
-  name                = "mysql-server"
+resource "azurerm_postgresql_server" "postgresql" {
+  name                = "my-postgresql-server"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   sku_name            = "B_Gen5_1"
   storage_mb          = 5120
-  version             = "5.7"
-  depends_on          = [azurerm_resource_group.rg.name]
-
-  administrator_login          = "adminuser"
-  administrator_login_password = "P@ssw0rd1234"
-
+  version             = "11"
+  administrator_login = "admin"
+  administrator_login_password = "P@ssw0rd123!"
   ssl_enforcement_enabled = false
+}
+
+resource "azurerm_postgresql_database" "database" {
+  name                = "my-postgresql-database"
+  server_name         = azurerm_postgresql_server.postgresql.name
+  resource_group_name = azurerm_resource_group.rg.name
+  charset             = "UTF8"
+  collation           = "English_United States.1252"
 }
