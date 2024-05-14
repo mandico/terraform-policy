@@ -25,7 +25,7 @@ resource "azurerm_postgresql_server" "postgresql" {
   version             = "11"
   administrator_login = "mandico"
   administrator_login_password = "P@ssw0rd123!"
-  ssl_enforcement_enabled = false
+  ssl_enforcement_enabled = true
 }
 
 resource "azurerm_postgresql_database" "database" {
