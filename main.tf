@@ -23,7 +23,7 @@ resource "azurerm_postgresql_server" "postgresql" {
   sku_name            = "B_Gen5_1"
   storage_mb          = 5120
   version             = "11"
-  administrator_login = "admin"
+  administrator_login = "mandico"
   administrator_login_password = "P@ssw0rd123!"
   ssl_enforcement_enabled = false
 }
