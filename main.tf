@@ -17,7 +17,7 @@ resource "azurerm_resource_group" "rg" {
 }
 
 resource "azurerm_postgresql_server" "postgresql" {
-  name                = "my-postgresql-server"
+  name                = "azr-postgresql-server"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   sku_name            = "B_Gen5_1"
@@ -29,7 +29,7 @@ resource "azurerm_postgresql_server" "postgresql" {
 }
 
 resource "azurerm_postgresql_database" "database" {
-  name                = "my-postgresql-database"
+  name                = "azr-postgresql-db"
   server_name         = azurerm_postgresql_server.postgresql.name
   resource_group_name = azurerm_resource_group.rg.name
   charset             = "UTF8"
