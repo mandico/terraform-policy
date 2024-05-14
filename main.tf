@@ -23,6 +23,7 @@ resource "azurerm_mysql_server" "mysql" {
   sku_name            = "B_Gen5_1"
   storage_mb          = 5120
   version             = "5.7"
+  depends_on          = [azurerm_resource_group.rg.name]
 
   administrator_login          = "adminuser"
   administrator_login_password = "P@ssw0rd1234"
