@@ -16,21 +16,18 @@ resource "azurerm_resource_group" "rg" {
   location = "eastus"
 }
 
-resource "azurerm_mysql_server" "mysql" {
-  name                = "my-mysql-server"
-  location            = azurerm_resource_group.rg.location
+resource "azurerm_mysql_flexible_server" "mysql_server" {
+  name                = "my-flexible-server"
   resource_group_name = azurerm_resource_group.rg.name
-  sku_name            = "B_Gen5_1"
-  storage_mb          = 5120
-  version             = "5.7"
-
-  administrator_login          = "adminuser"
-  administrator_login_password = "P@ssw0rd1234"
-
-  ssl_enforcement_enabled = true
-  ssl_minimal_tls_version_enforced = "TLS1_2"
-
-  tags = {
-    environment = "dev"
+  location            = azurerm_resource_group.rg.location
+  sku_name            = "Standard_D2s_v3"
+  storage_profile {
+    storage_mb = 5120
   }
+  administrator_login          = "adminuser"
+  administrator_login_password = "P@ssw0rd123!"
+  version                      = "8.0"
+  backup_retention_days        = 7
+  auto_grow_enabled            = true
+  ssl_enforcement_enabled      = true
 }
