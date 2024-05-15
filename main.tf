@@ -17,6 +17,6 @@ resource "azurerm_resource_group" "rg" {
 }
 resource "azurerm_app_configuration" "appconf" {
   name                = "azr-app-config-demo"
-  resource_group_name = azurerm_resource_group.example.name
-  location            = azurerm_resource_group.example.location
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg.location
 }
